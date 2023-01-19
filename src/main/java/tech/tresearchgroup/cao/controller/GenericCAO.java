@@ -13,12 +13,12 @@ public class GenericCAO implements GenericCache {
     private final GenericCache genericCache;
     private final CacheMethodEnum cacheMethodEnum;
 
-    public GenericCAO(int apiCacheSize, int databaseCacheSize, int pageApiCacheSize, int pageDatabaseCacheSize) {
+    public GenericCAO(long apiCacheSize, long databaseCacheSize, long pageApiCacheSize, long pageDatabaseCacheSize) {
         this.cacheMethodEnum = CacheMethodEnum.LOCAL;
         this.genericCache = new GenericLocalCache(apiCacheSize, databaseCacheSize, pageApiCacheSize, pageDatabaseCacheSize);
     }
 
-    public GenericCAO(CacheMethodEnum cacheMethodEnum, int apiCacheSize, int databaseCacheSize, int pageApiCacheSize, int pageDatabaseCacheSize, Class theClass) {
+    public GenericCAO(CacheMethodEnum cacheMethodEnum, long apiCacheSize, long databaseCacheSize, long pageApiCacheSize, long pageDatabaseCacheSize, Class theClass) {
         this.cacheMethodEnum = cacheMethodEnum;
         if (cacheMethodEnum.equals(CacheMethodEnum.REDIS)) {
             this.genericCache = new GenericRemoteCache(theClass);

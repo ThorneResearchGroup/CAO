@@ -13,7 +13,7 @@ public class GenericLocalCache implements GenericCache {
     private final Cache<Long, byte[]> pageApiCache;
     private final Cache<Long, List<List<Long>>> pageDatabaseCache;
 
-    public GenericLocalCache(int apiCacheSize, int databaseCacheSize, int pageApiCacheSize, int pageDatabaseCacheSize) {
+    public GenericLocalCache(long apiCacheSize, long databaseCacheSize, long pageApiCacheSize, long pageDatabaseCacheSize) {
         this.apiCache = Caffeine.newBuilder().maximumSize(apiCacheSize).build();
         this.databaseCache = Caffeine.newBuilder().maximumSize(databaseCacheSize).build();
         this.pageApiCache = Caffeine.newBuilder().maximumSize(pageApiCacheSize).build();
