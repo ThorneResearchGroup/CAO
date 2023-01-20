@@ -6,7 +6,7 @@
 
     <groupId>tech.tresearchgroup.cao</groupId>
     <artifactId>cao</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
