@@ -9,17 +9,17 @@ import java.util.List;
 
 public class GlobalStaticLocalCache {
     private static final Cache<String, List<String>> staticCache;
-    private static final Cache<String, List<DomContent>> domCache;
+    private static final Cache<String, String> domCache;
 
     static {
         staticCache = Caffeine.newBuilder().build();
         domCache = Caffeine.newBuilder().build();
     }
 
-    public static void create(CacheTypesEnum cacheTypesEnum, String key, List data) {
+    public static void create(CacheTypesEnum cacheTypesEnum, String key, Object data) {
         switch (cacheTypesEnum) {
             case STATIC -> staticCache.put(key, (List<String>) data);
-            case DOM -> domCache.put(key, (List<DomContent>) data);
+            case DOM -> domCache.put(key, (String) data);
         }
     }
 
@@ -31,7 +31,7 @@ public class GlobalStaticLocalCache {
         };
     }
 
-    public static void update(CacheTypesEnum cacheTypesEnum, String key, List value) {
+    public static void update(CacheTypesEnum cacheTypesEnum, String key, Object value) {
         switch (cacheTypesEnum) {
             case STATIC -> {
                 staticCache.invalidate(key);
@@ -39,7 +39,7 @@ public class GlobalStaticLocalCache {
             }
             case DOM -> {
                 domCache.invalidate(key);
-                domCache.put(key, (List<DomContent>) value);
+                domCache.put(key, (String) value);
             }
         }
     }
